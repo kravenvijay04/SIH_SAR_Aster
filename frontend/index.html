@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <title>Aster</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <div class='con'>
+
+    <div id="nav">
+      <h2 id="name">Aster</h>
+
+        <h2 id="hm">Home</h2>
+        <h2 id="ab">About</h2>
+        <h2>Contact</h2>
+
+
+    </div>
+    <div id="head">
+
+      <h1>SAR Image Colorizer</h1>
+      <div id="para">
+        <p>Transform your grayscale SAR images into vibrant, colorized versions </p>
+        <p id="secondline">with AI advanced Deep Learning model</p>
+      </div>
+    </div>
+
+    <div id="flex">
+      <div id="input">
+
+        <i class="fa-solid fa-cloud-arrow-up"></i>
+        <p>Drag and Drop your Grayscale Image</p>
+        <label for='input-file'><strong>Upload</strong></label>
+        <input type='file' accept='image/jpg,image/png,image.jpeg' id='input-file'>
+
+      </div>
+
+      <div id="outside">
+        <div id="output">
+          <div id="steps">
+            <h1 id="ophead">Get Started in 3 Easy Steps</h1>
+            <p> <i class="fa-solid fa-check"></i> Upload your black and white SAR image using the drag-and-drop or file
+              browse option.</p>
+            <p> <i class="fa-solid fa-check"></i> Our advanced AI algorithm will analyze your image and generate a
+              colorized version.</p>
+            <p> <i class="fa-solid fa-check"></i> Download your vibrant, colorized SAR image and start using it in your
+              projects</p>
+          </div>
+          <img id="display" src="" width="500px" />
+
+        </div>
+
+        <button id='but' onclick=" loading()"><i class="fa-solid fa-paintbrush"></i><strong>Colorize</strong></button>
+      </div>
+
+    </div>
+
+  </div>
+  <div id="overlay"></div>
+  <div id="pop-over">
+    <div id="popin">
+      <div id="grayscale">
+        <p id="gray1">Grayscale image</p>
+        <img id="inImage" src="/image/new_data1.jpg" width="70%" />
+      </div>
+      <i class="fa-solid fa-right-long"></i>
+      <div id="colorized">
+        <p id="color1">Colorized image</p>
+        <img id="op" src="/image/op_data.jpg" width="70%" />
+      </div>
+
+    </div>
+
+  </div>
+
+  </div>
+  <span id="load">
+    <div class="loader"></div>
+    <h2></h2>
+  </span>
+
+
+  <script>
+    let inputFile = document.getElementById("input-file");
+    let display = document.getElementById("display");
+    let button = document.getElementById("but");
+    let overlay = document.getElementById("overlay");
+    let popover = document.getElementById("pop-over");
+    let steps = document.getElementById("steps");
+    let load = document.getElementById("load")
+    button.disabled = true;
+    inputFile.onchange = function () {
+      display.src = URL.createObjectURL(inputFile.files[0]);
+      button.disabled = false;
+      steps.style.display = "none";
+    }
+    let container = document.querySelector("#output");
+
+
+    overlay.addEventListener("click", function () {
+      overlay.style.display = "none"
+      popover.style.display = "none"
+      load.style.display = "none"
+    })
+
+    function loading() {
+
+      overlay.style.display = "block"
+      load.style.display = "block"
+      setTimeout(ex, 1800)
+    }
+    function ex() {
+
+      popover.style.display = "block"
+    }
+  </script>
+  <script type="module" src="/src/main.jsx"></script>
+
+</body>
+
+</html>
