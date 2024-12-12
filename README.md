@@ -80,3 +80,10 @@ Make sure you have the following installed:
 
 
 ---
+2. **Install Dependencies**
+
+   ```bash
+   npm install
+
+---
+
